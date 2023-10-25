@@ -5,21 +5,22 @@ from django.urls import reverse_lazy
 
 from .forms import CustomUserCreationForm
 
-
+def login(request):
+    return render(request, 'app_auth/login.html')
 
 
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user=form.save()
-            login(request, user)
+            user = form.save()
+            login(request)
             return redirect('profile')
     else:
         form = CustomUserCreationForm()
     return render(request, 'app_auth/register.html', {'form': form})
 
-def login(request):
+def login_view(request):
     redirect_url = reverse('profile')
     if request.method == 'GET':
         if request.user.is_authenticated:
