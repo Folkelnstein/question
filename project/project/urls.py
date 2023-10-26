@@ -10,6 +10,7 @@ urlpatterns = [
     path('myauth/', include('app_auth.urls')),
     path('',include('app_project.urls')),
 
+
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -72,6 +72,7 @@
     </div>
   </div>
   <div class="container">
+    {{ form.non_field.errors }}
     <form method="post">
     {% csrf_token %}
     <div class="row mb-3">
